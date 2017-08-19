@@ -3,13 +3,13 @@
 #   - epicsf fork of OBS that inclues --stats flag
 #   - jq : https://stedolan.github.io/jq/
 set -uf -o pipefail
-OBS_PATH="/Users/Jackie/git/obs-studio"
-PROFILE_PATH="$OBS_PATH/build/rundir/RelWithDebInfo/config/obs-studio/basic/profiles"
+OBS_PATH="/Users/epic/obs-studio"
+PROFILE_PATH="$OBS_PATH/build-primary/rundir/RelWithDebInfo/config/obs-studio/basic/profiles"
 
 # TODO: SSH into Isaiah
 # TODO: Find the actual profile name of the main stream
 
-if [ ! -e "$PROFILE_PATH/Untitled/service.json" ]; then
+if [ ! -e "$PROFILE_PATH/Stream_Monkey_Primary/service.json" ]; then
 	echo "Cannot find obs profiles"
 	exit 1
 fi
@@ -33,5 +33,5 @@ f() {
 }
 
 # Run OBS
-cd $OBS_PATH/build/rundir/RelWithDebInfo/bin/
-./obs -p -m --verbose --stats --profile "Untitled" --startstreaming | f
+cd $OBS_PATH/build-primary/rundir/RelWithDebInfo/bin/
+./obs -p -m --verbose --stats --profile "Stream_Monkey_Primary" --startstreaming | f
