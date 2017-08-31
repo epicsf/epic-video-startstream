@@ -8,7 +8,7 @@ PROFILE_PATH="$OBS_PATH/build-fblive/rundir/RelWithDebInfo/config/obs-studio/bas
 
 # TODO: SSH into Isaiah
 
-read -p "Input FB Live Stream Key (Planning Center -> Notes): " -n 52 -r streamkey
+read -p "Input FB Live Stream Key (Planning Center -> Notes): " -r streamkey
 echo
 
 if [ ! -e "$PROFILE_PATH/FB_Live/service.json" ]; then
@@ -17,7 +17,7 @@ if [ ! -e "$PROFILE_PATH/FB_Live/service.json" ]; then
 fi
 
 # Set stream key and recreate profile file
-jq --arg tmp "$streamkey" '.settings.key|="\($tmp)"' $PROFILE_PATH/FB\ Live/service.json > foo.json
+jq --arg tmp "$streamkey" '.settings.key|="\($tmp)"' $PROFILE_PATH/FB_Live/service.json > foo.json
 mv foo.json $PROFILE_PATH/FB_Live/service.json
 
 # Function to keep output on one line
